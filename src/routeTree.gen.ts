@@ -18,7 +18,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as UsersRouteImport } from './routes/users'
-import { Route as DeclarationsIdRouteImport } from './routes/declarations.$id'
+import { Route as DeclarationsIdRouteImport } from './routes/declarations_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -66,16 +66,16 @@ const UsersRoute = UsersRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeclarationsIdRoute = DeclarationsIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => DeclarationsRoute,
+  id: '/declarations_/$id',
+  path: '/declarations/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assessments': typeof AssessmentsRoute
   '/dashboard': typeof DashboardRoute
-  '/declarations': typeof DeclarationsRouteWithChildren
+  '/declarations': typeof DeclarationsRoute
   '/indicators': typeof IndicatorsRoute
   '/login': typeof LoginRoute
   '/reports': typeof ReportsRoute
@@ -87,7 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assessments': typeof AssessmentsRoute
   '/dashboard': typeof DashboardRoute
-  '/declarations': typeof DeclarationsRouteWithChildren
+  '/declarations': typeof DeclarationsRoute
   '/indicators': typeof IndicatorsRoute
   '/login': typeof LoginRoute
   '/reports': typeof ReportsRoute
@@ -100,13 +100,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/assessments': typeof AssessmentsRoute
   '/dashboard': typeof DashboardRoute
-  '/declarations': typeof DeclarationsRouteWithChildren
+  '/declarations': typeof DeclarationsRoute
   '/indicators': typeof IndicatorsRoute
   '/login': typeof LoginRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
   '/users': typeof UsersRoute
-  '/declarations/$id': typeof DeclarationsIdRoute
+  '/declarations_/$id': typeof DeclarationsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -144,19 +144,20 @@ export interface FileRouteTypes {
     | '/reports'
     | '/settings'
     | '/users'
-    | '/declarations/$id'
+    | '/declarations_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssessmentsRoute: typeof AssessmentsRoute
   DashboardRoute: typeof DashboardRoute
-  DeclarationsRoute: typeof DeclarationsRouteWithChildren
+  DeclarationsRoute: typeof DeclarationsRoute
   IndicatorsRoute: typeof IndicatorsRoute
   LoginRoute: typeof LoginRoute
   ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
   UsersRoute: typeof UsersRoute
+  DeclarationsIdRoute: typeof DeclarationsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -224,38 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/declarations/$id': {
-      id: '/declarations/$id'
-      path: '/$id'
+    '/declarations_/$id': {
+      id: '/declarations_/$id'
+      path: '/declarations/$id'
       fullPath: '/declarations/$id'
       preLoaderRoute: typeof DeclarationsIdRouteImport
-      parentRoute: typeof DeclarationsRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface DeclarationsRouteChildren {
-  DeclarationsIdRoute: typeof DeclarationsIdRoute
-}
-
-const DeclarationsRouteChildren: DeclarationsRouteChildren = {
-  DeclarationsIdRoute: DeclarationsIdRoute,
-}
-
-const DeclarationsRouteWithChildren = DeclarationsRoute._addFileChildren(
-  DeclarationsRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssessmentsRoute: AssessmentsRoute,
   DashboardRoute: DashboardRoute,
-  DeclarationsRoute: DeclarationsRouteWithChildren,
+  DeclarationsRoute: DeclarationsRoute,
   IndicatorsRoute: IndicatorsRoute,
   LoginRoute: LoginRoute,
   ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
   UsersRoute: UsersRoute,
+  DeclarationsIdRoute: DeclarationsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
