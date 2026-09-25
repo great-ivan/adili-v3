@@ -1,5 +1,5 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useMemo, useState, type ButtonHTMLAttributes, type FormEvent, type ReactNode } from "react";
 import { AlertTriangle, Bell, BookOpenCheck, Check, ChevronDown, ChevronLeft, ChevronRight, ClipboardCheck, Download, Eye, FileBarChart, FileText, Filter, Gauge, LogOut, Menu, MoreHorizontal, PanelLeftClose, Search, Settings, ShieldCheck, SlidersHorizontal, UserRound, Users, X } from "lucide-react";
 import { assessments, declarations, indicators, users, type Status } from "@/lib/mock-data";
 import logoAsset from "@/assets/adili-logo.png.asset.json";
@@ -10,7 +10,7 @@ const nav = [
   {to:"/reports",label:"Reports",icon:FileBarChart}, {to:"/users",label:"Users",icon:Users}, {to:"/settings",label:"Settings",icon:Settings},
 ] as const;
 
-export function Button({children, variant="primary", className="", ...props}:{children:ReactNode;variant?:"primary"|"secondary"|"ghost"|"danger";className?:string}&React.ButtonHTMLAttributes<HTMLButtonElement>){
+export function Button({children, variant="primary", className="", ...props}:{children:ReactNode;variant?:"primary"|"secondary"|"ghost"|"danger";className?:string}&ButtonHTMLAttributes<HTMLButtonElement>){
  const styles={primary:"bg-primary text-primary-foreground border-primary hover:bg-primary/90",secondary:"bg-card text-foreground border-border hover:bg-muted",ghost:"bg-transparent text-muted-foreground border-transparent hover:bg-muted",danger:"bg-destructive text-destructive-foreground border-destructive hover:bg-destructive/90"};
  return <button className={`inline-flex min-h-9 items-center justify-center gap-2 rounded-panel border px-3 text-xs font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-ring/30 disabled:pointer-events-none disabled:opacity-50 ${styles[variant]} ${className}`} {...props}>{children}</button>
 }
