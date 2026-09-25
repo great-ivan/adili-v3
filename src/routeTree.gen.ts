@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssessmentsRouteImport } from './routes/assessments'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DeclarationsRouteImport } from './routes/declarations'
+import { Route as IndicatorsRouteImport } from './routes/indicators'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as UsersRouteImport } from './routes/users'
+import { Route as DeclarationsIdRouteImport } from './routes/declarations_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssessmentsRoute = AssessmentsRouteImport.update({
+  id: '/assessments',
+  path: '/assessments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeclarationsRoute = DeclarationsRouteImport.update({
+  id: '/declarations',
+  path: '/declarations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndicatorsRoute = IndicatorsRouteImport.update({
+  id: '/indicators',
+  path: '/indicators',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsersRoute = UsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeclarationsIdRoute = DeclarationsIdRouteImport.update({
+  id: '/declarations_/$id',
+  path: '/declarations/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assessments': typeof AssessmentsRoute
+  '/dashboard': typeof DashboardRoute
+  '/declarations': typeof DeclarationsRoute
+  '/indicators': typeof IndicatorsRoute
+  '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/declarations/$id': typeof DeclarationsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assessments': typeof AssessmentsRoute
+  '/dashboard': typeof DashboardRoute
+  '/declarations': typeof DeclarationsRoute
+  '/indicators': typeof IndicatorsRoute
+  '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/declarations/$id': typeof DeclarationsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assessments': typeof AssessmentsRoute
+  '/dashboard': typeof DashboardRoute
+  '/declarations': typeof DeclarationsRoute
+  '/indicators': typeof IndicatorsRoute
+  '/login': typeof LoginRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/users': typeof UsersRoute
+  '/declarations_/$id': typeof DeclarationsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assessments'
+    | '/dashboard'
+    | '/declarations'
+    | '/indicators'
+    | '/login'
+    | '/reports'
+    | '/settings'
+    | '/users'
+    | '/declarations/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assessments'
+    | '/dashboard'
+    | '/declarations'
+    | '/indicators'
+    | '/login'
+    | '/reports'
+    | '/settings'
+    | '/users'
+    | '/declarations/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/assessments'
+    | '/dashboard'
+    | '/declarations'
+    | '/indicators'
+    | '/login'
+    | '/reports'
+    | '/settings'
+    | '/users'
+    | '/declarations_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssessmentsRoute: typeof AssessmentsRoute
+  DashboardRoute: typeof DashboardRoute
+  DeclarationsRoute: typeof DeclarationsRoute
+  IndicatorsRoute: typeof IndicatorsRoute
+  LoginRoute: typeof LoginRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  UsersRoute: typeof UsersRoute
+  DeclarationsIdRoute: typeof DeclarationsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assessments': {
+      id: '/assessments'
+      path: '/assessments'
+      fullPath: '/assessments'
+      preLoaderRoute: typeof AssessmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/declarations': {
+      id: '/declarations'
+      path: '/declarations'
+      fullPath: '/declarations'
+      preLoaderRoute: typeof DeclarationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/indicators': {
+      id: '/indicators'
+      path: '/indicators'
+      fullPath: '/indicators'
+      preLoaderRoute: typeof IndicatorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/users': {
+      id: '/users'
+      path: '/users'
+      fullPath: '/users'
+      preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/declarations_/$id': {
+      id: '/declarations_/$id'
+      path: '/declarations/$id'
+      fullPath: '/declarations/$id'
+      preLoaderRoute: typeof DeclarationsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssessmentsRoute: AssessmentsRoute,
+  DashboardRoute: DashboardRoute,
+  DeclarationsRoute: DeclarationsRoute,
+  IndicatorsRoute: IndicatorsRoute,
+  LoginRoute: LoginRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  UsersRoute: UsersRoute,
+  DeclarationsIdRoute: DeclarationsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
